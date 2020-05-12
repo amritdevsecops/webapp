@@ -1,7 +1,7 @@
 pipeline {
   agent any 
   tools {
-    maven 'MavenTest'
+    maven 'maven'
   }
   stages {
     stage ('Initialize') {
