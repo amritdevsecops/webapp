@@ -24,7 +24,7 @@ pipeline {
     stage ('Source Composition Analysis') {
       steps {
          sh 'rm owasp* || true'
-         sh 'wget "https://github.com/amritdevsecops/webapp/blob/master/owasp-dependency-check.sh" '
+         sh 'wget "https://github.com/amritdevsecops/webapp/owasp-dependency-check.sh" '
          sh 'chmod +x owasp-dependency-check.sh'
          sh 'bash owasp-dependency-check.sh'     
       }
@@ -39,7 +39,7 @@ pipeline {
     stage ('Deploy-To-Tomcat') {
             steps {
            sshagent(['tomcat']) {
-                sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@13.232.153.125:/home/ubuntu/prod/apache-tomcat-8.5.54/webapps/webapp.war'
+                sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@13.233.174.16:/home/ubuntu/prod/apache-tomcat-8.5.54/webapps/webapp.war'
               }      
            }       
     }
